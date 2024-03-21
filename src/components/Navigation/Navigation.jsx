@@ -12,14 +12,14 @@ const Navigation = () => {
 				<span></span>
 				<span></span>
 				<span></span>
-				Home
+				<h1 className={css.title}>Home</h1>
 			</NavLink>
 			<NavLink className={getNavLinkClassNames} to="/movies">
 				<span></span>
 				<span></span>
 				<span></span>
 				<span></span>
-				Movies
+				<h1 className={css.title}>Movies</h1>
 			</NavLink>
 		</>
 	);

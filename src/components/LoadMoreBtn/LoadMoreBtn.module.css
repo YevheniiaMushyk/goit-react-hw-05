@@ -1,0 +1,79 @@
+@property --rotate {
+	syntax: "<angle>";
+	initial-value: 132deg;
+	inherits: false;
+}
+
+:root {
+	--height: calc(var(--width) / 2.5);
+	--width: 20vh;
+}
+
+.loadMoreBtn {
+	position: relative;
+	display: block;
+	width: var(--width);
+	height: var(--height);
+	border-radius: 1em;
+	margin: 2em auto;
+}
+
+.loadMoreBtn::before {
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: -50;
+	width: 100%;
+	height: 100%;
+	border-radius: inherit;
+	background-image: conic-gradient(from var(--rotate), var(--violet), var(--pink), var(--blue), var(--pink), var(--violet));
+	animation: spin 3.5s linear infinite;
+}
+
+.loadMoreBtn::after {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: -50;
+	height: 100%;
+	width: 100%;
+	filter: blur(1em);
+	background-image: conic-gradient(from var(--rotate), var(--violet), var(--pink), var(--blue), var(--pink), var(--violet));
+	animation: spin 3.5s linear infinite;
+}
+
+@keyframes spin {
+	0% {
+		--rotate: 0deg;
+	}
+	100% {
+		--rotate: 360deg;
+	}
+}
+
+.loadMoreBtnText {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 1.6em;
+	font-weight: 500;
+	line-height: 1.5;
+	color: var(--pink);
+	background-color: var(--bgc);
+
+	width: 95%;
+	height: 90%;
+	border-radius: inherit;
+}
+
+.loadMoreBtnText:hover::before,
+.loadMoreBtnText:hover::after {
+	opacity: 0.5;
+}

@@ -3,8 +3,9 @@
 	justify-content: center;
 	align-items: center;
 	gap: 40px;
-	min-width: 320px;
-	max-width: 1440px;
 	padding: 1em;
-	margin: 0 auto;
+	border-bottom-width: 2px;
+	border-bottom-style: solid;
+	border-image: linear-gradient(45deg, var(--violet), var(--pink), var(--blue), var(--pink), var(--violet)) 1;
+	border-image-slice: 1;
 }

@@ -1,0 +1,14 @@
+.movieImg {
+	position: relative;
+	width: 100%;
+}
+.movieText {
+	text-align: center;
+	font-size: 1.5em;
+	font-weight: 500;
+	line-height: 1.5;
+	background-image: linear-gradient(45deg, var(--violet), var(--pink), var(--blue), var(--pink), var(--violet));
+	background-clip: text;
+	-webkit-background-clip: text;
+	color: transparent;
+}

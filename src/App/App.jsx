@@ -9,7 +9,7 @@ import SkyBackground from "../components/SkyBackground/SkyBackground";
 
 function App() {
 	return (
-		<div className={css.star}>
+		<>
 			<SkyBackground />
 			<header className={css.header}>
 				<Navigation />
@@ -25,7 +25,7 @@ function App() {
 					<Route path="*" element={<NotFoundPage />} />
 				</Routes>
 			</main>
-		</div>
+		</>
 	);
 }
 

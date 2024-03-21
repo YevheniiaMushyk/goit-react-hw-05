@@ -1,0 +1,63 @@
+@property --gradient-angle {
+	syntax: "<angle>";
+	initial-value: 132deg;
+	inherits: false;
+}
+.scrollToTop {
+	position: fixed;
+	bottom: 10vh;
+	right: 10vw;
+	border-radius: 50%;
+	padding: 1em;
+	width: 75px;
+	height: 75px;
+}
+
+.scrollToTop::before,
+.scrollToTop::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	z-index: -1;
+	background-image: conic-gradient(from var(--gradient-angle), var(--violet), var(--pink), var(--blue), var(--pink), var(--violet));
+	border-radius: inherit;
+	animation: rotation 3.5s linear infinite;
+}
+
+.scrollToTop::before {
+	width: 102%;
+	height: 102%;
+	inset: -1px;
+}
+
+.scrollToTop::after {
+	filter: blur(1em);
+}
+
+.scrollToTop:hover::before,
+.scrollToTop:hover::after {
+	opacity: 0.5;
+}
+
+@keyframes rotation {
+	0% {
+		--gradient-angle: 0deg;
+	}
+	100% {
+		--gradient-angle: 360deg;
+	}
+}
+
+.arrow {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 25px;
+	height: 25px;
+	color: var(--pink);
+	background-color: var(--bgc);
+	padding: 1.3em;
+	border-radius: 50%;
+	z-index: 2;
+}

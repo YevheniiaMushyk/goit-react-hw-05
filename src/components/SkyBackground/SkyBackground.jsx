@@ -15,12 +15,12 @@ const SkyBackground = () => {
 					position: "absolute",
 					width: `${size}px`,
 					height: `${size}px`,
-					backgroundColor: "white",
+					backgroundColor: "#ed00ff",
 					borderRadius: "50%",
 					left: `${left}px`,
 					top: `${top}px`,
 					animationDuration: `${animationDuration}s `,
-					zIndex: -1,
+					zIndex: -50,
 				}}
 			></div>
 		);
