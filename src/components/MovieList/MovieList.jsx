@@ -1,5 +1,6 @@
 import MovieCard from "../MovieCard/MovieCard";
 import css from "../MovieList/MovieList.module.css";
+import { Link } from "react-router-dom";
 
 const MovieList = ({ movieList }) => {
 	return (
@@ -9,7 +10,9 @@ const MovieList = ({ movieList }) => {
 				movieList.map((movie, index) => {
 					return (
 						<li className={css.movieItem} key={`${movie.id}_${index}`}>
-							<MovieCard movie={movie} />
+							<Link to={`/movies/${movie.id}`}>
+								<MovieCard movie={movie} />
+							</Link>
 						</li>
 					);
 				})}

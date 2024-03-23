@@ -1,0 +1,53 @@
+.movieIdCard {
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	column-gap: 5em;
+}
+
+.movieImg {
+	z-index: 50;
+	border-radius: 50px;
+	overflow: hidden;
+	box-shadow: 0 0 5px var(--pink), 0 0 10px var(--pink), 0 0 15px var(--pink);
+}
+
+.movieDetails {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-start;
+	row-gap: 2em;
+}
+
+.movieMainTitle {
+	font-size: 2.2em;
+	font-weight: 500;
+}
+
+.movieTitle {
+	font-size: 1.6em;
+	font-weight: 500;
+}
+
+.movieTitle::first-letter {
+	text-transform: capitalize;
+}
+
+.movieValue {
+	font-size: 1.3em;
+	font-weight: 400;
+}
+
+.movieMainTitle,
+.movieTitle {
+	background-image: linear-gradient(45deg, var(--violet), var(--pink), var(--blue), var(--pink), var(--violet));
+	background-clip: text;
+	-webkit-background-clip: text;
+	color: transparent;
+}
+
+.movieList {
+	display: flex;
+	column-gap: 1em;
+}

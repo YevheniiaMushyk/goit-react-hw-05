@@ -81,6 +81,7 @@ button {
 	cursor: pointer;
 	transition: 0.25s ease;
 	z-index: 1;
+	color: inherit;
 }
 button:hover {
 	transform: scale(1.1);

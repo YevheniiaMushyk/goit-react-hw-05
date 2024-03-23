@@ -38,10 +38,10 @@ const HomePage = () => {
 				setIsLoading(true);
 				setIsLoadMore(false);
 
-				const data = await axios.get("trending/movie/day", options);
-				setMovieList((prevList) => [...prevList, ...data.data.results]);
+				const { data } = await axios.get("trending/movie/day", options);
+				setMovieList((prevList) => [...prevList, ...data.results]);
 
-				if (queryPage <= data.data.total_pages) {
+				if (queryPage <= data.total_pages) {
 					setIsLoadMore(true);
 				}
 			} catch (err) {
