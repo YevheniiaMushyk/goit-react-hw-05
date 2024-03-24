@@ -13,6 +13,5 @@
 
 .defaultImage:hover {
 	box-shadow: 0 0 5px var(--pink), 0 0 10px var(--pink), 0 0 15px var(--pink);
-
 	margin-bottom: 0.5em;
 }

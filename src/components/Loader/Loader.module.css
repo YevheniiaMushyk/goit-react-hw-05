@@ -1,28 +1,34 @@
 .loader {
-	position: absolute;
+	/* position: absolute;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	padding: 1em;
+	padding: 1em; */
 	display: flex;
 	flex-direction: column;
+	justify-content: center;
 	align-items: center;
+	/* margin: 0 auto; */
+}
+
+.loader::backdrop {
+	color: var(--bgc);
 }
 
 .ringContainer {
 	position: relative;
 	width: 100%;
-	height: 100%;
+	height: 250px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
 .ring {
+	position: absolute;
 	width: 220px;
 	height: 220px;
 	border: 0px solid transparent;
 	border-radius: 50%;
-	position: absolute;
 	margin: 0;
 }
 .ring:nth-child(1) {

@@ -1,19 +1,15 @@
-.message {
-	/* position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%); */
+.reviewDataCon {
 	display: flex;
-	justify-content: center;
+	justify-content: space-between;
 	align-items: center;
-	width: 100%;
-	text-align: center;
+}
 
-	font-size: 1.6em;
-	font-weight: 600;
+.reviewData {
+	font-size: 1.3em;
+	font-weight: 500;
+	margin-bottom: 5px;
 	background-image: linear-gradient(45deg, var(--violet), var(--pink), var(--blue), var(--pink), var(--violet));
 	background-clip: text;
 	-webkit-background-clip: text;
 	color: transparent;
-	z-index: 2000;
 }

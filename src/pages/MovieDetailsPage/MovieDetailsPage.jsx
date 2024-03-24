@@ -1,12 +1,12 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
+import { NavLink, Link, Outlet, useParams, useLocation } from "react-router-dom";
 import axios from "axios";
+import clsx from "clsx";
 import Loader from "../../components/Loader/Loader";
 import ScrollToTop from "../../components/ScrollToTop/ScrollToTop";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import MovieId from "../../components/MovieId/MovieId";
 import css from "./MovieDetailsPage.module.css";
-import { NavLink, Outlet, useLocation, useParams } from "react-router-dom";
-import clsx from "clsx";
 
 const getAddLinkClassNames = ({ isActive }) => clsx(css.addLink, isActive && css.active);
 
@@ -19,8 +19,9 @@ const MovieDetailsPage = () => {
 
 	axios.defaults.baseURL = "https://api.themoviedb.org/3/";
 	const { movieId } = useParams();
+
 	const location = useLocation();
-	const backLinkRef = useRef(location.state ?? "/");
+	const backLink = location.state?.from ?? "/";
 
 	useEffect(() => {
 		const options = {
@@ -35,8 +36,8 @@ const MovieDetailsPage = () => {
 			},
 		};
 
-		async function fetchMovies() {
-			setMovie({});
+		async function fetchMovieId() {
+			if (!movieId) return;
 			try {
 				setIsError(false);
 				setIsLoading(true);
@@ -50,7 +51,7 @@ const MovieDetailsPage = () => {
 			}
 		}
 
-		fetchMovies();
+		fetchMovieId();
 	}, [movieId]);
 
 	useEffect(() => {
@@ -74,25 +75,36 @@ const MovieDetailsPage = () => {
 
 	return (
 		<div className={css.detailsPage}>
-			<NavLink className={css.btnBack} to={backLinkRef.current}>
-				Go back
-			</NavLink>
-			<div className={css.movieIdContainer}>{!isError ? <MovieId movie={movie} /> : <ErrorMessage message={errorMessage} />}</div>
-			<p className={css.detailPart}>Aditional information</p>
-			<ul className={css.detailsList}>
-				<li>
-					<NavLink className={getAddLinkClassNames} to="cast">
-						Cast
-					</NavLink>
-				</li>
-				<li>
-					<NavLink className={getAddLinkClassNames} to="reviews">
-						Reviews
-					</NavLink>
-				</li>
-			</ul>
-			<Outlet />
+			<div className={css.btnBack}>
+				<Link className={css.btnBackLink} to={backLink}>
+					<span className={css.btnBackText}>Go back</span>
+				</Link>
+			</div>
 			{isLoading && <Loader />}
+			{!isLoading && (
+				<>
+					<div className={css.movieIdContainer}>{!isError ? <MovieId movie={movie} /> : <ErrorMessage message={errorMessage} />}</div>
+					{!isError && (
+						<>
+							<p className={css.detailPart}>Aditional information</p>
+
+							<ul className={css.detailsList}>
+								<li className={css.detailsItem}>
+									<NavLink className={getAddLinkClassNames} to="cast">
+										Cast
+									</NavLink>
+								</li>
+								<li className={css.detailsItem}>
+									<NavLink className={getAddLinkClassNames} to="reviews">
+										Reviews
+									</NavLink>
+								</li>
+							</ul>
+							<Outlet />
+						</>
+					)}
+				</>
+			)}
 			{isScrollToTop && <ScrollToTop scrollToTop={scrollToTop} />}
 		</div>
 	);

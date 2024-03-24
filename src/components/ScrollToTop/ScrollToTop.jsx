@@ -1,5 +1,5 @@
-import css from "./ScrollToTop.module.css";
 import { FaArrowUp } from "react-icons/fa6";
+import css from "./ScrollToTop.module.css";
 
 const ScrollToTop = ({ scrollToTop }) => {
 	return (

@@ -41,7 +41,7 @@ const HomePage = () => {
 				const { data } = await axios.get("trending/movie/day", options);
 				setMovieList((prevList) => [...prevList, ...data.results]);
 
-				if (queryPage <= data.total_pages) {
+				if (queryPage < data.total_pages) {
 					setIsLoadMore(true);
 				}
 			} catch (err) {
@@ -81,7 +81,7 @@ const HomePage = () => {
 	return (
 		<div className={css.homeContainer}>
 			{isLoading && <Loader />}
-			{!isError ? <MovieList movieList={movieList} /> : <ErrorMessage message={errorMessage} />}
+			{!isLoading && <>{!isError ? <MovieList movieList={movieList} /> : <ErrorMessage message={errorMessage} />}</>}
 			{isLoadMore && <LoadMoreBtn handleLoadMore={handleLoadMore} />}
 			{isScrollToTop && <ScrollToTop scrollToTop={scrollToTop} />}
 		</div>

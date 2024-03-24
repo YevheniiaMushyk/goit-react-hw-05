@@ -27,6 +27,7 @@ function App() {
 						<Route path="reviews" element={<MovieReviews />} />
 					</Route>
 					<Route path="*" element={<NotFoundPage />} />
+					{/* <Route path="*" element={<Navigate to="/" replace />} /> */}
 				</Routes>
 			</main>
 		</Suspense>

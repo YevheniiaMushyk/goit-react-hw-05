@@ -4,45 +4,36 @@
 	inherits: false;
 }
 
-:root {
-	--height: calc(var(--width) / 2.5);
-	--width: 20vh;
+.loadMore {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 2em auto;
 }
 
 .loadMoreBtn {
 	position: relative;
-	display: block;
-	width: var(--width);
-	height: var(--height);
-	border-radius: 1em;
-	margin: 2em auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 10px;
+	padding: 0.3rem;
+	transition: 250ms ease;
 }
 
-.loadMoreBtn::before {
+.loadMoreBtn::before,
+.loadMoreBtn::after {
 	content: "";
 	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	z-index: -50;
-	width: 100%;
-	height: 100%;
+	inset: 0;
+	z-index: -1;
 	border-radius: inherit;
 	background-image: conic-gradient(from var(--rotate), var(--violet), var(--pink), var(--blue), var(--pink), var(--violet));
 	animation: spin 3.5s linear infinite;
 }
 
 .loadMoreBtn::after {
-	content: "";
-	position: absolute;
-	top: 0;
-	left: 0;
-	z-index: -50;
-	height: 100%;
-	width: 100%;
 	filter: blur(1em);
-	background-image: conic-gradient(from var(--rotate), var(--violet), var(--pink), var(--blue), var(--pink), var(--violet));
-	animation: spin 3.5s linear infinite;
 }
 
 @keyframes spin {
@@ -54,26 +45,22 @@
 	}
 }
 
-.loadMoreBtnText {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	font-size: 1.6em;
-	font-weight: 500;
-	line-height: 1.5;
-	color: var(--pink);
-	background-color: var(--bgc);
-
-	width: 95%;
-	height: 90%;
-	border-radius: inherit;
+.loadMoreBtn:hover {
+	transform: scale(1.1);
 }
 
 .loadMoreBtnText:hover::before,
 .loadMoreBtnText:hover::after {
 	opacity: 0.5;
+}
+
+.loadMoreBtnText {
+	display: inline-block;
+	font-size: 1.6em;
+	font-weight: 500;
+	line-height: 1.5;
+	color: var(--pink);
+	background-color: var(--bgc);
+	border-radius: inherit;
+	padding: 0.5rem 1rem;
 }

@@ -1,0 +1,12 @@
+.castList {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	padding: 1em 0;
+	gap: 20px;
+}
+.castItem {
+	z-index: 50;
+	width: calc((100% - 60px) / 4);
+}

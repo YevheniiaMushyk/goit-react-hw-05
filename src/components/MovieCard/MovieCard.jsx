@@ -1,6 +1,6 @@
-import DefaultImage from "../DefaultImage/DefaultImage";
-import css from "./MovieCard.module.css";
 import { format } from "date-fns";
+import css from "./MovieCard.module.css";
+import DefaultImage from "../DefaultImage/DefaultImage";
 
 const BASE_URL = "https://image.tmdb.org/t/p/w500";
 

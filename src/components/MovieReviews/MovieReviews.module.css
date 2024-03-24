@@ -1,0 +1,16 @@
+.reviewList {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(45%, 1fr));
+	justify-content: center;
+	align-items: flex-start;
+	padding: 1em 0;
+	gap: 30px;
+}
+.reviewItem {
+	width: auto;
+	height: 90%;
+	border-radius: 20px;
+	padding: 1.2em;
+	overflow: hidden;
+	box-shadow: 0 0 5px var(--pink), 0 0 10px var(--pink), 0 0 15px var(--pink);
+}
