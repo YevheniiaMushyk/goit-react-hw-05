@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import axios from "axios";
+import baseUrl from "../../url";
 import css from "../MovieReviews/MovieReviews.module.css";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import Loader from "../Loader/Loader";
@@ -11,8 +11,6 @@ const MovieReviews = () => {
 	const [isError, setIsError] = useState(false);
 	const [errorMessage, setErrorMessage] = useState("");
 	const [isLoading, setIsLoading] = useState(false);
-
-	axios.defaults.baseURL = "https://api.themoviedb.org/3/";
 	const { movieId } = useParams();
 
 	useEffect(() => {
@@ -33,7 +31,7 @@ const MovieReviews = () => {
 			setIsError(false);
 			setIsLoading(true);
 			try {
-				const { data } = await axios.get(`movie/${movieId}/reviews`, options);
+				const { data } = await baseUrl.get(`movie/${movieId}/reviews`, options);
 				setReviews(data.results);
 				if (data.results.length <= 0) {
 					setIsError(true);

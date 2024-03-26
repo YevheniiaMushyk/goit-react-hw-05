@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import css from "../MovieCast/MovieCast.module.css";
-import axios from "axios";
+import baseUrl from "../../url";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import CastCard from "../CastCard/CastCard";
 import Loader from "../Loader/Loader";
@@ -11,8 +11,6 @@ const MovieCast = () => {
 	const [isError, setIsError] = useState(false);
 	const [errorMessage, setErrorMessage] = useState("");
 	const [isLoading, setIsLoading] = useState(false);
-
-	axios.defaults.baseURL = "https://api.themoviedb.org/3/";
 	const { movieId } = useParams();
 
 	useEffect(() => {
@@ -33,7 +31,7 @@ const MovieCast = () => {
 			setIsError(false);
 			setIsLoading(true);
 			try {
-				const { data } = await axios.get(`movie/${movieId}/credits`, options);
+				const { data } = await baseUrl.get(`movie/${movieId}/credits`, options);
 				setCastValue(data.cast);
 			} catch (err) {
 				setIsError(true);

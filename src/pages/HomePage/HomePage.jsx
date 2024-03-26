@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
 import css from "../HomePage/HomePage.module.css";
+import baseUrl from "../../url";
 import Loader from "../../components/Loader/Loader";
 import ScrollToTop from "../../components/ScrollToTop/ScrollToTop";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
@@ -15,8 +15,6 @@ const HomePage = () => {
 	const [errorMessage, setErrorMessage] = useState("");
 	const [queryPage, setQueryPage] = useState(1);
 	const [isScrollToTop, setScrollToTop] = useState(false);
-
-	axios.defaults.baseURL = "https://api.themoviedb.org/3/";
 
 	useEffect(() => {
 		const options = {
@@ -38,7 +36,7 @@ const HomePage = () => {
 				setIsLoading(true);
 				setIsLoadMore(false);
 
-				const { data } = await axios.get("trending/movie/day", options);
+				const { data } = await baseUrl.get("trending/movie/day", options);
 				setMovieList((prevList) => [...prevList, ...data.results]);
 
 				if (queryPage < data.total_pages) {

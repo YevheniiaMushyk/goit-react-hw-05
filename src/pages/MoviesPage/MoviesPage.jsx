@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import css from "../MoviesPage/MoviesPage.module.css";
-import axios from "axios";
+import baseUrl from "../../url";
 import Loader from "../../components/Loader/Loader";
 import ScrollToTop from "../../components/ScrollToTop/ScrollToTop";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
@@ -19,8 +19,6 @@ const MoviesPage = () => {
 	const [isScrollToTop, setScrollToTop] = useState(false);
 	const [searchParams, setSearchParams] = useSearchParams();
 	const query = searchParams.get("query");
-
-	axios.defaults.baseURL = "https://api.themoviedb.org/3/";
 
 	useEffect(() => {
 		const options = {
@@ -44,7 +42,7 @@ const MoviesPage = () => {
 				setIsLoading(true);
 				setIsLoadMore(false);
 
-				const { data } = await axios.get("search/movie", options);
+				const { data } = await baseUrl.get("search/movie", options);
 				setMovieList((prevList) => [...prevList, ...data.results]);
 				if (data.results.length <= 0) {
 					setIsError(true);

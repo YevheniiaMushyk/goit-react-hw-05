@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { NavLink, Link, Outlet, useParams, useLocation } from "react-router-dom";
-import axios from "axios";
+import baseUrl from "../../url";
 import clsx from "clsx";
 import Loader from "../../components/Loader/Loader";
 import ScrollToTop from "../../components/ScrollToTop/ScrollToTop";
@@ -16,12 +16,10 @@ const MovieDetailsPage = () => {
 	const [movie, setMovie] = useState({});
 	const [errorMessage, setErrorMessage] = useState("");
 	const [isScrollToTop, setScrollToTop] = useState(false);
-
-	axios.defaults.baseURL = "https://api.themoviedb.org/3/";
 	const { movieId } = useParams();
-
 	const location = useLocation();
-	const backLink = location.state?.from ?? "/";
+	const backLink = useRef(location.state ?? "/");
+	console.log(backLink.current);
 
 	useEffect(() => {
 		const options = {
@@ -41,7 +39,7 @@ const MovieDetailsPage = () => {
 			try {
 				setIsError(false);
 				setIsLoading(true);
-				const { data } = await axios.get(`movie/${movieId}`, options);
+				const { data } = await baseUrl.get(`movie/${movieId}`, options);
 				setMovie(data);
 			} catch (err) {
 				setIsError(true);
@@ -76,7 +74,7 @@ const MovieDetailsPage = () => {
 	return (
 		<div className={css.detailsPage}>
 			<div className={css.btnBack}>
-				<Link className={css.btnBackLink} to={backLink}>
+				<Link className={css.btnBackLink} to={backLink.current}>
 					<span className={css.btnBackText}>Go back</span>
 				</Link>
 			</div>
