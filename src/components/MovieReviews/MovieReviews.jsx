@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import baseUrl from "../../url";
 import css from "../MovieReviews/MovieReviews.module.css";
+import { instance, options } from "../../url";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import Loader from "../Loader/Loader";
 import ReviewCard from "../ReviewCard/ReviewCard";
@@ -14,24 +14,12 @@ const MovieReviews = () => {
 	const { movieId } = useParams();
 
 	useEffect(() => {
-		const options = {
-			method: "GET",
-			headers: {
-				accept: "application/json",
-				Authorization:
-					"Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyM2YzMzU0OWYzYjc3MDE2MDcxYzYwYTlmM2IyNWU4NiIsInN1YiI6IjY1ZmMxMmRmNjA2MjBhMDE3YzI3MTUxOSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Bpsk2SRHCKtimBFb0iVHaVxrP_IpAcKrpk3AiH6f_Uo",
-			},
-			params: {
-				language: "en-US",
-			},
-		};
-
 		async function fetchCast() {
 			setReviews(null);
 			setIsError(false);
 			setIsLoading(true);
 			try {
-				const { data } = await baseUrl.get(`movie/${movieId}/reviews`, options);
+				const { data } = await instance.get(`movie/${movieId}/reviews`, options);
 				setReviews(data.results);
 				if (data.results.length <= 0) {
 					setIsError(true);

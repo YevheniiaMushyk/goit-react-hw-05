@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import css from "../MoviesPage/MoviesPage.module.css";
-import baseUrl from "../../url";
+import { instance, options } from "../../url";
 import Loader from "../../components/Loader/Loader";
 import ScrollToTop from "../../components/ScrollToTop/ScrollToTop";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
@@ -21,20 +21,6 @@ const MoviesPage = () => {
 	const query = searchParams.get("query");
 
 	useEffect(() => {
-		const options = {
-			method: "GET",
-			headers: {
-				accept: "application/json",
-				Authorization:
-					"Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyM2YzMzU0OWYzYjc3MDE2MDcxYzYwYTlmM2IyNWU4NiIsInN1YiI6IjY1ZmMxMmRmNjA2MjBhMDE3YzI3MTUxOSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Bpsk2SRHCKtimBFb0iVHaVxrP_IpAcKrpk3AiH6f_Uo",
-			},
-			params: {
-				query: query,
-				include_adult: false,
-				language: "en-US",
-				page: queryPage,
-			},
-		};
 		if (!query) return;
 		async function fetchSearchMovies() {
 			try {
@@ -42,7 +28,7 @@ const MoviesPage = () => {
 				setIsLoading(true);
 				setIsLoadMore(false);
 
-				const { data } = await baseUrl.get("search/movie", options);
+				const { data } = await instance.get("search/movie", { ...options, params: { ...options.params, query: query, include_adult: false, page: queryPage } });
 				setMovieList((prevList) => [...prevList, ...data.results]);
 				if (data.results.length <= 0) {
 					setIsError(true);
@@ -66,7 +52,6 @@ const MoviesPage = () => {
 	const onSetSearchQuery = (query) => {
 		setMovieList([]);
 		setQueryPage(1);
-		setSearchParams(query);
 		setSearchParams({ query: query });
 	};
 

@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import { NavLink, Link, Outlet, useParams, useLocation } from "react-router-dom";
-import baseUrl from "../../url";
+import { instance, options } from "../../url";
 import clsx from "clsx";
 import Loader from "../../components/Loader/Loader";
 import ScrollToTop from "../../components/ScrollToTop/ScrollToTop";
@@ -18,28 +18,15 @@ const MovieDetailsPage = () => {
 	const [isScrollToTop, setScrollToTop] = useState(false);
 	const { movieId } = useParams();
 	const location = useLocation();
-	const backLink = useRef(location.state.from ?? "/");
-	console.log(backLink.current);
+	const backLink = useRef(location.state?.from ?? "/");
 
 	useEffect(() => {
-		const options = {
-			method: "GET",
-			headers: {
-				accept: "application/json",
-				Authorization:
-					"Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyM2YzMzU0OWYzYjc3MDE2MDcxYzYwYTlmM2IyNWU4NiIsInN1YiI6IjY1ZmMxMmRmNjA2MjBhMDE3YzI3MTUxOSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Bpsk2SRHCKtimBFb0iVHaVxrP_IpAcKrpk3AiH6f_Uo",
-			},
-			params: {
-				language: "en-US",
-			},
-		};
-
 		async function fetchMovieId() {
 			if (!movieId) return;
 			try {
 				setIsError(false);
 				setIsLoading(true);
-				const { data } = await baseUrl.get(`movie/${movieId}`, options);
+				const { data } = await instance.get(`movie/${movieId}`, options);
 				setMovie(data);
 			} catch (err) {
 				setIsError(true);
