@@ -18,7 +18,7 @@ const MovieDetailsPage = () => {
 	const [isScrollToTop, setScrollToTop] = useState(false);
 	const { movieId } = useParams();
 	const location = useLocation();
-	const backLink = useRef(location.state ?? "/");
+	const backLink = useRef(location.state.from ?? "/");
 	console.log(backLink.current);
 
 	useEffect(() => {
