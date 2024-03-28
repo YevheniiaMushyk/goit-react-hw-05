@@ -79,13 +79,9 @@ const MoviesPage = () => {
 	};
 	return (
 		<div className={css.movieContainer}>
+			{<SearchForm onSetSearchQuery={onSetSearchQuery} />}
+			{!isError ? <MovieList movieList={movieList} /> : <ErrorMessage message={errorMessage} />}
 			{isLoading && <Loader />}
-			{!isLoading && (
-				<>
-					{<SearchForm onSetSearchQuery={onSetSearchQuery} />}
-					{!isError ? <MovieList movieList={movieList} /> : <ErrorMessage message={errorMessage} />}
-				</>
-			)}
 			{isLoadMore && <LoadMoreBtn handleLoadMore={handleLoadMore} />}
 			{isScrollToTop && <ScrollToTop scrollToTop={scrollToTop} />}
 		</div>

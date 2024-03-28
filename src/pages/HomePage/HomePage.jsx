@@ -65,8 +65,8 @@ const HomePage = () => {
 
 	return (
 		<div className={css.homeContainer}>
+			{!isError ? <MovieList movieList={movieList} /> : <ErrorMessage message={errorMessage} />}
 			{isLoading && <Loader />}
-			{!isLoading && <>{!isError ? <MovieList movieList={movieList} /> : <ErrorMessage message={errorMessage} />}</>}
 			{isLoadMore && <LoadMoreBtn handleLoadMore={handleLoadMore} />}
 			{isScrollToTop && <ScrollToTop scrollToTop={scrollToTop} />}
 		</div>

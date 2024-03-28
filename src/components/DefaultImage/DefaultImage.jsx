@@ -1,10 +1,11 @@
+import { MdPhotoCamera } from "react-icons/md";
 import css from "./DefaultImage.module.css";
 
 const DefaultImage = () => {
 	return (
 		<div className={css.defaultImage}>
-			<span>No poster</span>
-			<span>😒</span>
+			<MdPhotoCamera className={css.defaultIcon} />
+			<span>no image</span>
 		</div>
 	);
 };
