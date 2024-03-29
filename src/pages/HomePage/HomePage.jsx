@@ -65,6 +65,7 @@ const HomePage = () => {
 
 	return (
 		<div className={css.homeContainer}>
+			<h1 className={css.homeTitle}>Trending today</h1>
 			{!isError ? <MovieList movieList={movieList} /> : <ErrorMessage message={errorMessage} />}
 			{isLoading && <Loader />}
 			{isLoadMore && <LoadMoreBtn handleLoadMore={handleLoadMore} />}

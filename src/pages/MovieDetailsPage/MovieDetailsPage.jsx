@@ -71,7 +71,9 @@ const MovieDetailsPage = () => {
 					<div className={css.movieIdContainer}>{!isError ? <MovieId movie={movie} /> : <ErrorMessage message={errorMessage} />}</div>
 					{!isError && (
 						<>
-							<p className={css.detailPart}>Aditional information</p>
+							<p className={css.detailPart}>
+								<span className={css.detailTitle}>Aditional information</span>
+							</p>
 
 							<ul className={css.detailsList}>
 								<li className={css.detailsItem}>

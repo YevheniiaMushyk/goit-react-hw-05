@@ -5,6 +5,7 @@
 }
 
 .detailsPage {
+	text-align: center;
 	padding: 2em 1em;
 	margin: 0 auto;
 }
@@ -74,16 +75,16 @@
 }
 
 .detailPart {
-	padding: 1em 0;
-
 	border-top-width: 2px;
 	border-top-style: solid;
 	border-bottom-width: 2px;
 	border-bottom-style: solid;
 	border-image: linear-gradient(45deg, var(--violet), var(--pink), var(--blue), var(--pink), var(--violet)) 1;
 	border-image-slice: 1;
+	padding: 1em 0;
+}
 
-	text-align: center;
+.detailTitle {
 	font-size: 1.7em;
 	font-weight: 500;
 	background-image: linear-gradient(45deg, var(--violet), var(--pink), var(--blue), var(--pink), var(--violet));
@@ -93,26 +94,24 @@
 }
 
 .detailsList {
-	padding: 1em 0;
-
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	column-gap: 3em;
-
 	text-align: center;
-	font-size: 1.7em;
-	font-weight: 500;
-	background-image: linear-gradient(45deg, var(--violet), var(--pink), var(--blue), var(--pink), var(--violet));
-	background-clip: text;
-	-webkit-background-clip: text;
-	color: transparent;
+	padding: 1em 0;
 }
 
 .detailsItem {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	font-size: 1.7em;
+	font-weight: 500;
+	background-image: linear-gradient(45deg, var(--violet), var(--pink), var(--blue), var(--pink), var(--violet));
+	background-clip: text;
+	-webkit-background-clip: text;
+	color: transparent;
 }
 
 .addLink {

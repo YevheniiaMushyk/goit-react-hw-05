@@ -1,3 +1,15 @@
 .homeContainer {
+	text-align: center;
 	padding: 2em 1em;
+}
+
+.homeTitle {
+	display: inline-block;
+	font-size: 2.5rem;
+	background-image: linear-gradient(45deg, var(--violet), var(--pink), var(--blue), var(--pink), var(--violet));
+	background-clip: text;
+	-webkit-background-clip: text;
+	color: transparent;
+
+	margin-bottom: 2rem;
 }
